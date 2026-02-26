@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | Mechanical Engineer Portfolio</title>
+  <style>
+    :root{
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#e2e8f0;
+      --accent:#0f172a;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{
+      width:min(1100px, 92%);
+      margin:0 auto;
+    }
+    header{
+      position:sticky; top:0; z-index:100;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      font-weight:700;
+      font-size:14px;
+      letter-spacing:.2px;
+    }
+    .nav-links{
+      display:flex; gap:18px; flex-wrap:wrap;
+      font-size:14px; color:var(--muted);
+    }
+    .nav-links a:hover{color:var(--text)}
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:28px;
+      padding:44px 0 18px;
+      align-items:center;
+    }
+    .badge{
+      display:inline-block;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:12px;
+      background:white;
+      margin-bottom:12px;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height:1.1;
+    }
+    .hero p{
+      color:var(--muted);
+      margin:14px 0 0;
+      max-width:700px;
+    }
+    .hero-actions{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-block;
+      border-radius:12px;
+      padding:10px 14px;
+      font-size:14px;
+      font-weight:600;
+      border:1px solid var(--line);
+      background:white;
+    }
+    .btn.primary{
+      background:var(--accent);
+      color:white;
+      border-color:var(--accent);
+    }
+    .hero-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:10px;
+    }
+    .hero-card img{
+      border-radius:12px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      width:100%;
+    }
+
+    section{padding:12px 0 10px}
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:26px;
+      line-height:1.15;
+    }
+    .muted{color:var(--muted)}
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+      margin-top:10px;
+    }
+    .project{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+    }
+    .project .main-img{
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      border-bottom:1px solid var(--line);
+    }
+    .project-content{padding:14px}
+    .category{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      color:var(--muted);
+      font-weight:700;
+      margin:0;
+    }
+    .project h3{
+      margin:6px 0 8px;
+      font-size:18px;
+      line-height:1.2;
+    }
+    .project p{
+      margin:0;
+      font-size:14px;
+      color:var(--muted);
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-top:10px;
+    }
+    .chip{
+      border:1px solid var(--line);
+      background:#f8fafc;
+      border-radius:999px;
+      padding:4px 8px;
+      font-size:11px;
+      color:#334155;
+    }
+    .result{
+      margin-top:10px;
+      font-size:13px;
+      color:#1e293b;
+    }
+    .gallery{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:6px;
+    }
+    .gallery img{
+      height:68px;
+      width:100%;
+      object-fit:cover;
+      border-radius:8px;
+      border:1px solid var(--line);
+      background:#f1f5f9;
+    }
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+      font-size:13px;
+      font-weight:600;
+    }
+    .links a{
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+      margin-top:8px;
+    }
+    .skill{
+      border:1px solid var(--line);
+      background:#f8fafc;
+      border-radius:12px;
+      padding:10px;
+      font-size:14px;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
+      margin-top:10px;
+    }
+    .contact-item{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+    .contact-item small{
+      display:block;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      font-size:11px;
+      margin-bottom:4px;
+    }
+
+    footer{
+      margin-top:20px;
+      border-top:1px solid var(--line);
+      background:white;
+    }
+    footer .container{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      padding:14px 0 22px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @media (max-width: 950px){
+      .projects-grid{grid-template-columns:1fr 1fr}
+      .skills-grid{grid-template-columns:1fr 1fr}
+      .hero{grid-template-columns:1fr}
+      .hero-card img{aspect-ratio: 16/10;}
+    }
+    @media (max-width: 620px){
+      .projects-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .nav{align-items:flex-start; flex-direction:column}
+      .nav-links{gap:12px}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">YOUR NAME | Mechanical Engineer</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">Mechanical Engineering Portfolio</span>
+        <h1>Designing practical systems with analysis, fabrication, and automation</h1>
+        <p>
+          I’m <strong>YOUR NAME</strong>, a mechanical engineer focused on design, robotics, manufacturing, and hands-on problem solving.
+          This portfolio highlights projects in FSAE systems, welding automation, and materials testing.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <!-- Replace with your own image -->
+        <img src="images/profile/hero.jpg" alt="Headshot or engineering project image">
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="card">
+        <h2>About Me</h2>
+        <p class="muted">
+          Replace this with your story: your mechanical engineering interests (automotive, robotics, manufacturing, thermal/structural analysis, etc.),
+          your school/team experience, and what type of engineering role you want.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:end;flex-wrap:wrap;">
+        <div>
+          <h2 style="margin-bottom:4px;">Featured Projects</h2>
+          <p class="muted" style="margin:0;">Add your best work first: photos, results, and demo videos.</p>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1: FSAE -->
+        <article class="project">
+          <img class="main-img" src="images/fsae/main.jpg" alt="FSAE pneumatic shifter main image">
+          <div class="project-content">
+            <p class="category">Automotive Engineering / Mechanical Design</p>
+            <h3>FSAE Pneumatic Shifter System</h3>
+            <p>
+              Designed, modeled, assembled, and tested a complete FSAE-compliant pneumatic shifter system using MAC valves
+              for reliable gear engagement and efficient air actuation.
+            </p>
+
+            <div class="chips">
+              <span class="chip">SolidWorks</span>
+              <span class="chip">Pneumatics</span>
+              <span class="chip">MAC Valves</span>
+              <span class="chip">Assembly</span>
+              <span class="chip">Testing</span>
+            </div>
+
+            <div class="result"><strong>Result:</strong> Consistent shifting with low air consumption, multiple shifts per tank, and strong on-car performance.</div>
+
+            <div class="gallery">
+              <img src="images/fsae/cad.jpg" alt="FSAE CAD">
+              <img src="images/fsae/assembly.jpg" alt="FSAE Assembly">
+              <img src="images/fsae/testing.jpg" alt="FSAE Testing">
+            </div>
+
+            <div class="links">
+              <a href="#">Case Study</a>
+              <a href="#">Files / Repo</a>
+              <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" rel="noreferrer">Watch Video Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 2: UR10 -->
+        <article class="project">
+          <img class="main-img" src="images/ur10/main.jpg" alt="UR10 welding cobot main image">
+          <div class="project-content">
+            <p class="category">Robotics / Automation / Welding</p>
+            <h3>UR10 Welding Cobot Path Planning</h3>
+            <p>
+              Developed a weld path planning concept for a UR10 collaborative robot using sensor-assisted seam localization ideas
+              and repeatable path generation for welding applications.
+            </p>
+
+            <div class="chips">
+              <span class="chip">UR10</span>
+              <span class="chip">ROS2</span>
+              <span class="chip">Python</span>
+              <span class="chip">Sensors</span>
+              <span class="chip">Welding Automation</span>
+            </div>
+
+            <div class="result"><strong>Result:</strong> Improved path repeatability and reduced setup guesswork, with a foundation for future real-time sensing upgrades.</div>
+
+            <div class="gallery">
+              <img src="images/ur10/setup.jpg" alt="UR10 setup">
+              <img src="images/ur10/path.jpg" alt="UR10 path planning">
+              <img src="images/ur10/cell.jpg" alt="UR10 cell layout">
+            </div>
+
+            <div class="links">
+              <a href="#">Case Study</a>
+              <a href="#">Files / Repo</a>
+              <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" rel="noreferrer">Watch Video Demo</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 3: PLA -->
+        <article class="project">
+          <img class="main-img" src="images/pla/main.jpg" alt="PLA impact test main image">
+          <div class="project-content">
+            <p class="category">Materials / Experimental Testing</p>
+            <h3>Impact Strength of Commercial PLA by Percent Infill</h3>
+            <p>
+              Supervised a team of 4 students in the design of 7 specimens and Izod impact testing of 3D-printed PLA parts
+              using ASTM D256-style procedures to evaluate infill effects on impact resistance.
+            </p>
+
+            <div class="chips">
+              <span class="chip">ASTM D256</span>
+              <span class="chip">Izod Testing</span>
+              <span class="chip">3D Printing</span>
+              <span class="chip">PLA</span>
+              <span class="chip">Data Analysis</span>
+            </div>
+
+            <div class="result"><strong>Result:</strong> With a gyroid infill pattern, 60% infill produced the best impact strength while 50% infill was the weakest.</div>
+
+            <div class="gallery">
+              <img src="images/pla/specimens.jpg" alt="PLA specimens">
+              <img src="images/pla/izod.jpg" alt="Izod testing machine">
+              <img src="images/pla/results.jpg" alt="PLA results chart">
+            </div>
+
+            <div class="links">
+              <a href="#">Case Study</a>
+              <a href="#">Files / Repo</a>
+              <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank" rel="noreferrer">Watch Video Demo</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="card">
+        <h2>Skills & Tools</h2>
+        <div class="skills-grid">
+          <div class="skill">CAD (SolidWorks / FreeCAD)</div>
+          <div class="skill">FEA / Simulation</div>
+          <div class="skill">MATLAB / Excel</div>
+          <div class="skill">Python</div>
+          <div class="skill">ROS2</div>
+          <div class="skill">Pneumatics / Mechanical Assembly</div>
+          <div class="skill">Welding / Fabrication</div>
+          <div class="skill">Technical Documentation</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>
+          <h2 style="margin-bottom:6px;">Resume</h2>
+          <p class="muted" style="margin:0;">Upload your PDF resume to your repo and keep the filename as <strong>resume.pdf</strong>.</p>
+        </div>
+        <a class="btn primary" href="resume.pdf" target="_blank" rel="noreferrer">Download Resume (PDF)</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="card">
+        <h2>Contact</h2>
+        <p class="muted">Replace these with your real contact links.</p>
+        <div class="contact-grid">
+          <a class="contact-item" href="mailto:youremail@example.com">
+            <small>Email</small>
+            <div>youremail@example.com</div>
+          </a>
+          <a class="contact-item" href="https://www.linkedin.com/in/yourname" target="_blank" rel="noreferrer">
+            <small>LinkedIn</small>
+            <div>linkedin.com/in/yourname</div>
+          </a>
+          <a class="contact-item" href="https://github.com/yourusername" target="_blank" rel="noreferrer">
+            <small>GitHub</small>
+            <div>github.com/yourusername</div>
+          </a>
+          <div class="contact-item">
+            <small>Location</small>
+            <div>McAllen, TX (optional)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© <span id="year"></span> YOUR NAME</div>
+      <div>Mechanical Engineering Portfolio</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
